@@ -38,6 +38,18 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "convert",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/convert-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "1.17"
+    },
+    {
+      "name": "crypto",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.0",
       "packageUri": "lib/",
@@ -60,6 +72,12 @@
       "rootUri": "file:///C:/src/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "2.2"
+    },
+    {
+      "name": "hive",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/hive-1.4.4+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.6"
     },
     {
       "name": "matcher",
@@ -140,7 +158,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-09-15T01:35:28.607094Z",
+  "generated": "2021-09-15T14:03:45.034925Z",
   "generator": "pub",
   "generatorVersion": "2.10.3"
 }
