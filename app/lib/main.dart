@@ -2,13 +2,35 @@ import 'package:app/contact.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
+import 'package:hive_flutter/hive_flutter.dart';
+
+const favoritesBox = 'favorite_books';
+const List<String> books = [
+  'Harry Potter',
+  'To Kill a Mockingbird',
+  'The Hunger Games',
+  'The Giver',
+  'Brave New World',
+  'Unwind',
+  'World War Z',
+  'The Lord of the Rings',
+  'The Hobbit',
+  'Moby Dick',
+  'War and Peace',
+  'Crime and Punishment',
+  'The Adventures of Huckleberry Finn',
+  'Catch-22',
+  'The Sound and the Fury',
+  'The Grapes of Wrath',
+  'Heart of Darkness',
+];
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final appDocumentDir = await path_provider.getApplicationDocumentsDirectory();
   Hive.init(appDocumentDir.path);
   Hive.registerAdapter(ContactAdapter());
-  final box = await Hive.openBox('myBox');
+  await Hive.openBox<String>('myBox');
   runApp(MyApp());
 }
 
@@ -50,13 +72,20 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
-  final box = Hive.box('myBox');
-  void printAll() {
-    for (int i = 0; i < box.length; i++) {
-      print(box.getAt(i).name);
-      print(box.getAt(i).age);
-    }
+
+  Box<String> favoriteBooksBox;
+  @override
+  void initState() {
+    super.initState();
+    favoriteBooksBox = Hive.box("myBox");
   }
+
+  // void printAll() {
+  //   for (int i = 0; i < box.length; i++) {
+  //     print(box.getAt(i).name);
+  //     print(box.getAt(i).age);
+  //   }
+  // }
 
   final myController = TextEditingController();
   @override
@@ -66,26 +95,21 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TextField(
-              controller: myController,
-            ),
-            FlatButton(
-              onPressed: () {
-                // final person = Contact(myController.text.toString(), 35);
-
-                // box.add(person);
-                // print(box.length);
-                printAll();
+        child: ValueListenableBuilder(
+          valueListenable: favoriteBooksBox.listenable(),
+          builder: (context, Box<String> box, _) {
+            return ListView.builder(
+              itemCount: books.length,
+              itemBuilder: (context, listIndex) {
+                return ListTile(
+                  title: Text(books[listIndex]),
+                );
               },
-              child: Text("dfkdkf99"),
-            ),
-          ],
+            );
+          },
         ),
       ),
-      // This trailing comma makes auto-formatting nicer for build methods.
     );
+    // This trailing comma makes auto-formatting nicer for build methods.
   }
 }
