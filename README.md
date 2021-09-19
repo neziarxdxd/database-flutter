@@ -13,7 +13,7 @@
 - [ ] delete
 
 ON GOING
-- [ ] add
+- [x] add
 
 /**
 TRASH:
