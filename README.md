@@ -1,10 +1,6 @@
 # FLUTTER DATABASE
 
-
--Raizen
-I fail I'm sorry
-
-# TODOS
+S
 
 - [ ] add
 - [X] viewing of data
